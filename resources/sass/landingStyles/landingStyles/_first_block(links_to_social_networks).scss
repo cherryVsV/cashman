@@ -1,0 +1,236 @@
+.svgrobot img {
+    width: 140%;
+}
+
+div.button.social {
+    color: white;
+    border-radius: 8px;
+    height: 60px;
+    padding-left: 10%;
+    padding-top: 1%;
+    text-align: center;
+    cursor: pointer;
+
+    &.telegram {
+        background: #1DB1E2;
+    }
+
+    &.vk {
+        background: #3278A6;
+    }
+
+    &.facebook {
+        background: #0A5498;
+    }
+
+    &.talk-me {
+        background: #e22921;
+    }
+
+    &.online-chat {
+        background: #1a53c6;
+    }
+
+    &.viber {
+        background: #89539D;
+    }
+
+    &.whatsapp {
+        background: #128C7E;
+    }
+
+    &.whatsapp-business {
+        background: #128C7E;
+        line-height: 20px;
+    }
+
+    &.webim {
+        background: #375476;
+    }
+
+    &.livetex {
+        background: #3c6f82;
+    }
+
+    &.avito {
+        background: #97cf26;
+    }
+
+    &.odnoklassniki {
+        background: #ef7f1a;
+    }
+
+    &.jivosita {
+        background: #00be57;
+    }
+
+    &.instagram {
+        background: #C13584;
+    }
+
+    &.add {
+        color: #052994 !important;
+        border: dashed 4px #052994;
+        background-color: transparent;
+    }
+
+    .logo {
+        color: white;
+        text-align: center;
+        line-height: 50px;
+        font-family: 'Font Awesome 5 Brands', serif;
+        font-size: 30px;
+        width: 50px;
+        border-radius: 50%;
+
+        img {
+            width: 40px;
+            height: 40px;
+        }
+    }
+}
+
+@media (min-width: 767px) {
+    div.button.social {
+        &.telegram:hover {
+            box-shadow: 0 0 30px rgb(29 177 226 / 50%);
+        }
+
+        &.vk:hover {
+            box-shadow: 0 0 30px rgb(50 120 166 / 50%);
+        }
+
+        &.facebook:hover {
+            box-shadow: 0 0 30px rgb(10 84 152 / 50%);
+        }
+
+        &.talk-me:hover {
+            box-shadow: 0 0 30px rgb(226 41 33 / 50%);
+        }
+
+        &.online-chat:hover {
+            box-shadow: 0 0 30px rgb(26 83 198 / 50%);
+        }
+
+        &.viber:hover {
+            box-shadow: 0 0 30px rgb(137 83 157 / 50%);
+        }
+
+        &.whatsapp:hover, &.whatsapp-business:hover {
+            box-shadow: 0 0 30px rgb(18 140 126 / 50%);
+        }
+
+        &.webim:hover {
+            box-shadow: 0 0 30px rgb(55 84 118 / 50%);
+        }
+
+        &.livetex:hover {
+            box-shadow: 0 0 30px rgb(60 111 130 / 50%);
+        }
+
+        &.avito:hover {
+            box-shadow: 0 0 30px rgb(151 207 38 / 50%);
+        }
+
+        &.odnoklassniki:hover {
+            box-shadow: 0 0 30px rgb(239 127 26 / 50%);
+        }
+
+        &.jivosita:hover {
+            box-shadow: 0 0 30px rgb(0 190 87 / 50%);
+        }
+
+        &.instagram:hover {
+            box-shadow: 0 0 30px rgb(193 53 132 / 50%);
+        }
+
+        &.add:hover {
+            box-shadow: 0 0 30px rgb(5 41 148 / 50%);
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    div.button.social {
+        &.telegram .logo {
+            background: #1DB1E2;
+        }
+
+        &.vk .logo {
+            background: #3278A6;
+        }
+
+        &.facebook .logo {
+            background: #0A5498;
+        }
+
+        &.talk-me .logo {
+            background: #e22921;
+        }
+
+        &.online-chat .logo {
+            background: #1a53c6;
+        }
+
+        &.viber .logo {
+            background: #89539D;
+        }
+
+        &.whatsapp .logo {
+            background: #128C7E;
+        }
+
+        &.whatsapp-business .logo {
+            background: #128C7E;
+            line-height: 20px;
+        }
+
+        &.webim .logo {
+            background: #375476;
+        }
+
+        &.livetex .logo img, &.avito .logo {
+            width: 50px;
+            height: auto;
+        }
+
+        &.odnoklassniki .logo {
+            background: #ef7f1a;
+        }
+
+        &.jivosita .logo {
+            background: #00be57;
+        }
+
+        &.instagram .logo {
+            background: #C13584;
+        }
+
+        &.add .logo {
+            color: #052994 !important;
+            border: dashed 4px #052994;
+            background-color: transparent;
+        }
+
+        background: transparent !important;
+        border: none !important;
+        color: #9A9A9A;
+        margin-bottom: 20px;
+
+        .logo {
+            font-size: 25px;
+            margin: auto auto 15px;
+
+            img {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+}
+
+@media (max-width: 2000px) {
+    div.content div.first .image div.relative.left {
+        left: -40%;
+    }
+}

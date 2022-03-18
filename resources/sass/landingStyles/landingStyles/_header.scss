@@ -1,0 +1,70 @@
+header div.content div.button button.white {
+    margin-left: 30px;
+}
+
+@media (max-width: 767px) {
+    header {
+        div.content {
+            margin-top: 100% !important;
+        }
+
+        &.medium.small {
+            background: url("../../../assets/landing-img/Background/HeaderSmall.svg") no-repeat 50% 50%;
+            background-size: 120% 190%;
+            padding-bottom: 0;
+        }
+
+        div.wrapper.medium.small {
+            background: url(../../../assets/landing-img/Header/MainImageMedium.webp) no-repeat 50% 15%;
+            background-size: 70%;
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    div.logo h2 {
+        font-size: 20px !important;
+    }
+
+    header {
+        &.medium {
+            background: url("../../../assets/landing-img/Background/HeaderMedium.svg") no-repeat 50% 70%;
+            background-size: 120% 190%;
+            padding-bottom: 130px;
+        }
+
+        div.wrapper.medium {
+            background: url(../../../assets/landing-img/Header/MainImageMedium.webp) no-repeat 90% 50%;
+            background-size: 40%;
+        }
+    }
+
+    #trigger {
+        position: relative;
+        width: 25px;
+        height: 25px;
+        display: block;
+        cursor: pointer;
+        background: url("../../../assets/landing-img/Header/burger-menu.svg");
+        z-index: 3;
+
+        &.show {
+            background: url("../../../assets/landing-img/Header/burger-menu.svg");
+            // картинки back-arrow нет, поэтому используется картинка взятая выше
+            //background: url("../../../assets/landing-img/Header/back-arrow.svg");
+            position: fixed;
+        }
+    }
+}
+
+@media (max-width: 2000px) {
+    header {
+        background: url("../../../assets/landing-img/Background/HeaderLarge.svg") no-repeat 400% -130%;
+        background-size: 90% 90%;
+
+        div.wrapper {
+            background: url("../../../assets/landing-img/Header/MainImageLarge.png") no-repeat 110% 45%;
+            background-size: 50%;
+        }
+    }
+}

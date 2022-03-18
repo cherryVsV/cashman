@@ -1,0 +1,63 @@
+[
+    {
+        "name" : "accrual",
+        "icon" : "mdi mdi-trending-up",
+        "icon_size" : "32px",
+        "duration" : "2500",
+        "background" : "rgba(29, 204, 112,1)",
+        "height" : "75px",
+        "color" : "#FFFFFF",
+        "show_progress_timeout" : "true",
+        "progress_background" : "#19a55b",
+        "progress_thumb_bg" : "rgba(67,222,141,.9)"
+    },
+    {
+        "name" : "offs",
+        "icon" : "mdi mdi-trending-down",
+        "icon_size" : "32px",
+        "duration" : "2500",
+        "background" : "rgba(255,180,0,1)",
+        "height" : "75px",
+        "color" : "#FFFFFF",
+        "show_progress_timeout" : "true",
+        "progress_background" : "#e6bb4c",
+        "progress_thumb_bg" : "rgba(255,116,14,.9)"
+    },
+    {
+        "name" : "new-friend",
+        "icon" : "mdi mdi-account-plus",
+        "icon_size" : "32px",
+        "duration" : "2500",
+        "background" : "rgba(5,208,164,1)",
+        "height" : "75px",
+        "color" : "#FFFFFF",
+        "show_progress_timeout" : "true",
+        "progress_background" : "#17ab8b",
+        "progress_thumb_bg" : "rgba(74, 234, 200,.9)"
+    },
+    {
+        "name" : "add-admin",
+        "icon" : "mdi mdi-account-check",
+        "icon_size" : "32px",
+        "duration" : "2500",
+        "background" : "rgba(132,148,168,1)",
+        "height" : "75px",
+        "color" : "#FFFFFF",
+        "show_progress_timeout" : "true",
+        "progress_background" : "#8494A8",
+        "progress_thumb_bg" : "rgba(156,169,185,.9)"
+    },
+    {
+        "name" : "delete-admin",
+        "icon" : "mdi mdi-account-off",
+        "icon_size" : "32px",
+        "duration" : "2500",
+        "background" : "rgba(255,57,111,1)",
+        "height" : "75px",
+        "color" : "#FFFFFF",
+        "show_progress_timeout" : "true",
+        "progress_background" : "#e22559",
+        "progress_thumb_bg" : "rgba(228,87,125,1)"
+    }
+
+]

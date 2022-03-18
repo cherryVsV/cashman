@@ -1,0 +1,29 @@
+// Fonts Oswald and Roboto
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+// Bootstrap 5.0.1
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css");
+// Font-awesome 5.13.3
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
+// Owl.Carousel 2.3.4
+@import url("https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css");
+// Styles SCSS
+@import "landingStyles/animation";
+@import "landingStyles/background";
+@import "landingStyles/button";
+@import "landingStyles/chat";
+@import "landingStyles/eight_block(technology)";
+@import "landingStyles/first_block(links_to_social_networks)";
+@import "landingStyles/fourth_block(you_use)";
+@import "landingStyles/general";
+@import "landingStyles/header";
+@import "landingStyles/input";
+@import "landingStyles/ninth_block(bot_in_life)";
+@import "landingStyles/ninth_block";
+@import "landingStyles/second_block(maximum_tools)";
+@import "landingStyles/seven_block(advertising)";
+@import "landingStyles/six_block(tarifs)";
+@import "landingStyles/slider";
+@import "landingStyles/text_element";
+@import "landingStyles/third_block(you_are_not_alone)";
+@import "landingStyles/font-awesome-webfonts";
