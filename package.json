@@ -44,6 +44,7 @@
         "@stripe/stripe-js": "^1.22.0",
         "@vue-stripe/vue-stripe": "^4.4.1",
         "dtoaster": "^0.1.4",
+        "js-share": "^2.3.2",
         "moment": "^2.29.1",
         "qrcode": "^1.4.4",
         "sweetalert2": "^10.15.5",

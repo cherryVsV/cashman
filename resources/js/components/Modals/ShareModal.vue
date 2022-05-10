@@ -6,36 +6,20 @@
                     <h5 class="modal-title">{{$trans('strings.Share with')}}</h5>
                 </div>
                 <div class="modal-body">
-                    <ul class="action-button-list">
+                    <ul class="action-button-list social-icons" id="social-icons-modal">
                         <li>
-                            <a href="#" class="btn btn-list" data-bs-dismiss="modal">
+                            <a href="#" class="btn btn-list" data-bs-dismiss="modal" data-type="vk" :data-url="url">
                                 <span>
-                                    <ion-icon name="logo-facebook"></ion-icon>
-                                    Facebook
+                                    <ion-icon name="logo-vk"></ion-icon>
+                                    ВКонтакте
                                 </span>
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="btn btn-list" data-bs-dismiss="modal">
+                            <a href="#" class="btn btn-list" data-bs-dismiss="modal" data-type="ok" :data-url="url">
                                 <span>
-                                    <ion-icon name="logo-twitter"></ion-icon>
-                                    Twitter
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="btn btn-list" data-bs-dismiss="modal">
-                                <span>
-                                    <ion-icon name="logo-instagram"></ion-icon>
-                                    Instagram
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="btn btn-list" data-bs-dismiss="modal">
-                                <span>
-                                    <ion-icon name="logo-linkedin"></ion-icon>
-                                    Linkedin
+                                    <ion-icon src="/assets/icon/ok_logo.svg"></ion-icon>
+                                    Одноклассники
                                 </span>
                             </a>
                         </li>
@@ -47,7 +31,22 @@
 </template>
 
 <script>
+import {shareSocials} from "../../shareSocials";
+import {eventBus} from "../../app";
+
 export default {
-    name: "ShareModal"
+    name: "ShareModal",
+    mixins: [shareSocials],
+    data() {
+        return {
+            url: null
+        }
+    },
+    mounted() {
+        eventBus.$on('share-product', (data) => {
+            this.url = data
+            this.share("#social-icons-modal")
+        })
+    }
 }
 </script>

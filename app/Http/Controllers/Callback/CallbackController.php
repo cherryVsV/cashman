@@ -41,12 +41,10 @@ class CallbackController extends Controller
                 $filename = time().'-record' .'.mp3';
                 Storage::disk('public')->put($filename, File::get($file));
                 try {
-                    logger(Storage::url($filename));
                     Notification::route('telegram', '5335867947:AAF6FCBiLh3NJ9Ya3rHua7dTCT1vnWgD0iw')
                         ->notify(new TelegramNotification(null, Storage::url($filename)));
                     return response()->json(['status'=>'success']);
                 }catch(\Exception $exception){
-                    logger($exception);
                     return response()->json(['status'=>'error']);
                 }
             }

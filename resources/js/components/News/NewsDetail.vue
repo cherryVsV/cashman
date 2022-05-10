@@ -34,7 +34,10 @@
                 </p>
             </div>
             <div class="section">
-                <button class="btn btn-block btn-primary" data-bs-toggle="modal" data-bs-target="#actionSheetShare">
+                <button class="btn btn-block btn-primary"
+                        data-bs-toggle="modal"
+                        data-bs-target="#actionSheetShare"
+                        @click="shareProduct()">
                     <ion-icon name="share-outline"></ion-icon>
                     {{$trans('strings.Share This Post')}}
                 </button>
@@ -58,6 +61,7 @@ import ShareModal from "../Modals/ShareModal";
 import NewsItem from "./NewsItem";
 import Header from "../LayoutComponents/Header";
 import BottomMenu from "../LayoutComponents/BottomMenu";
+import {eventBus} from "../../app";
 
 export default {
     name: "NewsDetail",
@@ -74,6 +78,11 @@ export default {
         company: {
             type: Object,
             required: true
+        }
+    },
+    methods: {
+        shareProduct(){
+            eventBus.$emit('share-product', location.href)
         }
     }
 

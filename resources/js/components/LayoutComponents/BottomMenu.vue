@@ -6,7 +6,7 @@
                 <strong>{{$trans('strings.Main')}}</strong>
             </div>
         </a>
-        <a href="products" class="item">
+        <a href="/products" class="item">
             <div class="col">
                 <ion-icon name="cash-outline"></ion-icon>
                 <strong>{{$trans('strings.Stocks')}}</strong>
@@ -17,13 +17,13 @@
                 <ion-icon name="apps-outline"></ion-icon>
             </div>
         </a>
-        <a href="search-company" class="item">
+        <a href="/search-company" class="item">
             <div class="col">
                 <ion-icon name="grid-outline"></ion-icon>
                 <strong>{{$trans('strings.Companies')}}</strong>
             </div>
         </a>
-        <a href="news" class="item">
+        <a href="/news" class="item">
             <div class="col">
                 <ion-icon name="newspaper-outline"></ion-icon>
                 <strong>{{$trans('strings.News')}}</strong>

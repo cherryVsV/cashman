@@ -47,7 +47,7 @@ class TelegramNotification extends Notification
         if(!is_null($this->audio)) {
             return TelegramFile::create()
                 ->to($this->chatId)
-                ->file($this->audio, 'audio');
+                ->audio($this->audio);
         }else{
             return TelegramMessage::create()
                 ->to($this->chatId)
