@@ -20,12 +20,13 @@
             <div class="section tab-content mt-2 mb-2" :key="trigger">
                 <div class="row d-flex justify-content-center">
                     <div class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-3 col-xxl-2 mb-2"
-                         v-for="company in paginatedData">
+                         v-if="paginatedData.length>0" v-for="company in paginatedData">
                         <CompanyItem :company="company" :user="auth_user"></CompanyItem>
                     </div>
+                    <h3 style="text-align: center" v-if="paginatedData.length===0">По вашему запросу компании не найдены. Попробуйте еще раз</h3>
                 </div>
             </div>
-            <nav>
+            <nav  v-if="paginatedData.length>0">
                 <ul class="pagination pagination-rounded">
                     <li>
                         <button class="page-link" @click="prevPage" :disabled="pageNumber===0" type="button">

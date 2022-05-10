@@ -118,8 +118,18 @@ export default {
                     message: "</b>:\n" + this.form.message + "\n" + "\nМожно связаться в: " + JSON.stringify(this.socials),
 
                 })
-                .then(() => {
-                    this.sendMessage("Сообщение успешно отправлено");
+                .then((res) => {
+                    if(res.data.status === 'success'){
+                        Swal.fire({
+                            icon: 'success',
+                            title: this.$trans('strings.The operation cannot be performed'),
+                        });
+                    }else{
+                        Swal.fire({
+                            icon: 'error',
+                            title: this.$trans('strings.The operation cannot be performed'),
+                        });
+                    }
                     this.form.name = "";
                     this.form.phone = "";
                     this.form.message = "";

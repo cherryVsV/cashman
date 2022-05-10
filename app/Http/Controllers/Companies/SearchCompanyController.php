@@ -16,7 +16,6 @@ class SearchCompanyController extends Controller
         $companies = Company::where('title', 'like', '%' . $query . '%')
             ->select('id', 'title', 'image')
             ->get();
-
         //broadcast search results with Pusher channels
         event(new SearchEvent($companies));
 

@@ -134,4 +134,11 @@ class ProductController extends Controller
         ], Response::HTTP_OK);
 
     }
+
+    public function getProductPage($id){
+        $product = Product::find($id);
+        $company = Company::find($product->company_id);
+        $comments = [];
+        return view('pages.products.productDetailsPage', compact('product', 'company', 'comments'));
+    }
 }

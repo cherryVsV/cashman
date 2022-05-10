@@ -44,6 +44,16 @@
                     </div>
                 </a>
             </li>
+            <li>
+                <a :href="'/company-admin-achievements-'+id" class="item">
+                    <div class="icon-box bg-primary">
+                        <ion-icon name="gift-outline"></ion-icon>
+                    </div>
+                    <div class="in">
+                        <div>{{$trans('strings.Achievements')}}</div>
+                    </div>
+                </a>
+            </li>
         </ul>
         <div class="listview-title mt-2">{{$trans("strings.Your company's data")}}</div>
         <ul class="listview image-listview inset">

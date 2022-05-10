@@ -94,6 +94,7 @@ export default {
             let vm = this
             navigator.geolocation.getCurrentPosition(
                 position => {
+                    console.log(position)
                     axios.post('api/sort/companies', {
                         lat: position.coords.latitude,
                         lon: position.coords.longitude

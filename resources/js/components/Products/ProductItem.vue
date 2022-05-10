@@ -1,11 +1,11 @@
 <template>
     <div class="bill-box">
-        <div class="img-wrapper">
+        <div class="img-wrapper" @click="getProductPage">
             <img :src="productImage(items.image)" alt="img" class="image-block imaged w-100 images-product">
         </div>
-        <div class="price">{{items.price}}</div>
-        <p v-html="items.title"></p>
-        <a v-if="action" href="#" class="btn btn-primary btn-block btn-sm">{{ $trans('strings.Buy') }}</a>
+        <div class="price">$ {{items.price}}</div>
+        <p v-html="items.title" @click="getProductPage"></p>
+        <a v-if="action" href="#" class="btn btn-primary btn-block btn-sm" @click="buy">{{ $trans('strings.Buy') }}</a>
     </div>
 </template>
 
@@ -27,6 +27,28 @@ export default {
                 return './../assets/sample/' + image
             }
             return image
+        },
+        getProductPage(){
+            window.location.href = '/product/'+this.items.id
+        },
+        buy(){
+            axios.post('/buy/product', {
+                id: this.items.id
+            }).then((res)=>{
+                if(res.data.status === 'success'){
+                    Swal.fire({
+                        icon: 'success',
+                        title: this.$trans('strings.The operation was successful!'),
+                        text: this.$trans('strings.The purchase of goods was successfully completed'),
+                    });
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: this.$trans('strings.The operation cannot be performed'),
+                        text: this.$trans('strings.Insufficient funds for the purchase of goods'),
+                    });
+                }
+            })
         }
     }
 }

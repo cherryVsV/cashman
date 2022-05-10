@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\CompanyActionMenuController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\TariffController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Cashback\CashBackController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Companies\CompanyAuthController;
 use App\Http\Controllers\Companies\CompanyEditSectionController;
 use App\Http\Controllers\Companies\CompanyListController;
@@ -13,6 +15,7 @@ use App\Http\Controllers\Companies\CompanyProfileController;
 use App\Http\Controllers\HistoryAction\HistoryActionController;
 use App\Http\Controllers\News\NewsController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\Promocode\PromocodeController;
 use App\Http\Controllers\Region\RegionMapController;
 use App\Http\Controllers\Social\SocialController;
@@ -55,6 +58,7 @@ Route::group(['middleware' => ['web', 'setLocale']], function () {
     Route::get('/products', function () {
         return view('pages/products/ProductsPage');
     });
+    Route::get('/product/{id}', [\App\Http\Controllers\Products\ProductController::class, 'getProductPage']);
     Route::get('products/category/{id}', [\App\Http\Controllers\Products\ProductController::class, 'getProductsByCategory']);
     /* Новости (рекламные банеры) */
     Route::get('/news', [NewsController::class, 'getNews']);
@@ -70,8 +74,19 @@ Route::group(['middleware' => ['web', 'setLocale']], function () {
     Route::get('/complete-register-{email}', [SocialController::class, 'complete']);
     /*Страница с картой*/
     Route::get('/region-map/{id}', [RegionMapController::class, 'getMap']);
+
+    Route::group(['prefix'=>'api'], function(){
+        Route::get('/comments/{id}', [CommentController::class, 'fetchComments']);
+        Route::post('/comments', [CommentController::class, 'store']);
+    });
     /* Группа авторизованных пользователей */
     Route::group(['middleware' => ['auth']], function () {
+        Route::get('paypal/express-checkout/{price}', [PaypalController::class, 'expressCheckout'])->name('paypal.express-checkout');
+        Route::get('paypal/express-checkout-success',  [PaypalController::class, 'expressCheckoutSuccess']);
+        Route::post('paypal/notify', [PaypalController::class, 'notify']);
+        Route::post('/send-cashback', [CashBackController::class, 'sendCashback']);
+        Route::post('/paypal/payout', [PaypalController::class, 'payoutCashback']);
+        Route::post('/buy/product', [CashBackController::class, 'buyProduct']);
         Route::post('/save-push-notification-token', [NotificationController::class, 'savePushNotificationToken'])->name('save-push-notification-token');
         /* Профиль пользователя */
         Route::get('/user-profile', [UserProfileController::class, 'getAuthUser'])->name('profile');
@@ -81,9 +96,7 @@ Route::group(['middleware' => ['web', 'setLocale']], function () {
         /*Страница редактирования данных о профиле пользователя*/
         Route::get('/user-edit', [UserProfileController::class, 'index']);
         /* Достижения пользователя */
-        Route::get('/achievements', function () {
-            return view('pages/userProfile/achievements/achievementPage');
-        });
+        Route::get('/achievements', [AchievementController::class, 'getAchievements']);
         Route::get('/achievements/achievements-{id}', [AchievementController::class, 'getAchievement']);
         /* История действий пользователя */
         Route::get('/history',[HistoryActionController::class, 'getActionsPage']);
@@ -126,6 +139,7 @@ Route::group(['middleware' => ['web', 'setLocale']], function () {
                 Route::get('/company-action-menu-{id}', [CompanyActionMenuController::class, 'index']);
                 /*Страница списка администраторов компании*/
                 Route::get('/company-group-admin-{id}', [\App\Http\Controllers\Admin\CompanyAdminsController::class, 'getCompanyGroupAdmin']);
+                Route::get('/company-admin-achievements-{id}', [AchievementController::class, 'index']);
             });
             Route::get('/company-tariffs-{id}', [TariffController::class, 'getPage'])->name('company-tariffs');
         });

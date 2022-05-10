@@ -21,6 +21,8 @@ class CreateUserAchievementsTable extends Migration
             $table->bigInteger('achievement_id')->unsigned();
             $table->foreign('achievement_id')
                 ->references('id')->on('achievements');
+            $table->integer('progress')->default(0);
+            $table->integer('amount')->default(0);
             $table->timestamps();
         });
     }

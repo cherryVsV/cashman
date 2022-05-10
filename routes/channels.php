@@ -20,3 +20,8 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
 Broadcast::channel('search', function () {
     return true;
 });
+
+//live_comments/routes/channels.php
+Broadcast::channel('comment-channel', function () {
+    return true;
+});

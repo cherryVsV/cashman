@@ -18,8 +18,8 @@ class Achievement extends Model
         return $this->belongsTo(Characteristic::class, 'stat_id');
     }
 
-    public function users()
+    public function achievements()
     {
-        return $this->belongsToMany(User::class)->using(UserAchievement::class);
+        return $this->hasMany(UserAchievement::class);
     }
 }

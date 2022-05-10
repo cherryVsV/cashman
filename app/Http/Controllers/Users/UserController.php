@@ -31,6 +31,7 @@ class UserController extends Controller
         $latitude = $request->lat;
         $longitude = $request->lon;
         $radius = 20; //km
+        $companies = null;
         if ($latitude != 0 && $longitude != 0) {
             $companies = Company::selectRaw("id, title, image, latitude, longitude,
                          ( 6371 * acos( cos( radians(?) ) *
@@ -51,7 +52,8 @@ class UserController extends Controller
             $usersIds = CompanyUser::whereIn('company_id', $companiesIds)->pluck('user_id');
             $users = UserProfile::whereIn('id', $usersIds)->latest()->limit(30)->get();
             $history = HistoryUsersCompany::whereIn('company_id', $companiesIds)->latest()->limit(4)->get();
-        } else {
+        }
+        if(count($companies) == 0){
             $companies = Company::latest()->limit(30)->get();
             $products = Product::latest()->limit(30)->get();
             $news = CompanyAdvertising::where('type', 'Баннер')->limit(20)->get();

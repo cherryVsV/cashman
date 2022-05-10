@@ -11,5 +11,10 @@ class UserAchievement extends Pivot
 {
     use HasFactory;
     protected $table = 'user_achievements';
+
+    public function achievement()
+    {
+        return $this->belongsTo(Achievement::class, 'achievement_id');
+    }
 }
 

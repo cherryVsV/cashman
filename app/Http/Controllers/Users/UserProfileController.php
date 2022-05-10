@@ -10,6 +10,7 @@ use App\Models\HistoryUsersCompany;
 use App\Models\Notification;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\UserAchievement;
 use App\Models\UserProfile;
 use App\Models\UsersFriedsByCompany;
 use Illuminate\Http\Request;
@@ -72,22 +73,21 @@ class UserProfileController extends Controller
         foreach($cashbackCompanies as $c){
             $debitings = HistoryUsersCompany::where(['user_id'=>$profile->id, 'company_id'=>$c, 'type->ru'=>'Начисление'])->sum('value');
             $offs = HistoryUsersCompany::where(['user_id'=>$profile->id, 'company_id'=>$c, 'type->ru'=>'Списание'])->sum('value');
-            $score = 0;
             $money = HistoryUsersCompany::where(['user_id'=>$profile->id,'company_id'=>$c ])->sum('money_in_check');
-            if($debitings>$offs){
-                $score = round($debitings-$offs,2);
+            if(!is_null($c) && $debitings>0) {
+                $cashback[] = [
+                    'company_id' => $c,
+                    'image' => Company::where('id', $c)->value('image'),
+                    'value' => round($debitings, 2),
+                    'money_in_check' => $money,
+                    'description' => 'Суммарный кэшбек от компании',
+                    'type' => $offs
+                ];
             }
-            $cashback[] = [
-                'company_id'=>$c,
-                'image'=>Company::where('id', $c)->value('image'),
-                'value'=>$score,
-                'money_in_check'=>$money,
-                'description'=>'Суммарный кэшбек от компании',
-                'type'=>$offs
-            ];
         }
+        $achievements = UserAchievement::where('user_id', Auth::id())->with(['achievement'])->get();
         return view('pages/userProfile/userProfilePage', compact('profile', 'company',
-            'news', 'stories', 'cashback', 'actions'));
+            'news', 'stories', 'cashback', 'actions', 'achievements'));
     }
 
     public function getUserSettings()

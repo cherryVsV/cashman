@@ -11,20 +11,7 @@
                     <div class="action-sheet-content">
                         <form @submit.prevent="buySubscription"
                               @keydown="form.onKeydown($event)">
-                            <div class="form-group basic">
-                                <div class="input-wrapper">
-                                    <slot name="first">
-                                        <label class="label" for="account2d">{{$trans('strings.From')}}</label>
-                                        <input v-model="form.from" type="email" class="form-control" id="account2d"
-                                               placeholder="Enter IBAN">
-                                        <i class="clear-input">
-                                            <ion-icon name="close-circle"></ion-icon>
-                                        </i>
-                                    </slot>
-                                    <HasError :form="form" field="from"/>
-                                </div>
-                            </div>
-                            <div v-if="recipient && exchange===false" class="form-group basic">
+                            <div v-if="recipient" class="form-group basic">
                                 <div class="input-wrapper">
                                     <slot name="second">
                                         <label class="label" for="text11d">{{$trans('strings.To')}}</label>
@@ -37,17 +24,7 @@
                                     <HasError :form="form" field="to"/>
                                 </div>
                             </div>
-                            <div v-if="exchange ===true" class="form-group basic">
-                                <div class="input-wrapper">
-                                    <label class="label" for="currency1">{{$trans('strings.From')}}</label>
-                                    <select class="form-control custom-select" id="currency1">
-                                        <option value="1">EUR</option>
-                                        <option value="2">USD</option>
-                                        <option value="3">AUD</option>
-                                        <option value="4">CAD</option>
-                                    </select>
-                                </div>
-                            </div>
+
                             <div class="form-group basic">
                                 <slot name="third">
                                     <label class="label">{{$trans('strings.Enter Amount')}}</label>
@@ -62,7 +39,7 @@
                             </div>
                             <div class="form-group basic">
                                 <slot name="button">
-                                    <button type="button" class="btn btn-primary btn-block btn-lg"
+                                    <button type="button" class="btn btn-primary btn-block btn-lg" @click="makeInvoice"
                                             data-bs-dismiss="modal">{{ title }}
                                     </button>
                                 </slot>
@@ -85,7 +62,6 @@ export default {
     data: function () {
         return {
             form: new Form({
-                from: '',
                 to: '',
                 amount: ''
             })
@@ -95,6 +71,50 @@ export default {
         async buySubscription() {
             await this.form.post('api/buy/subscription')
         },
+        makeInvoice(){
+            if(this.recipient && !this.exchange) {
+              this.form.post('/send-cashback').then((res)=>{
+                  if(res.data.status === 'success'){
+                      Swal.fire({
+                          icon: 'success',
+                          title: this.$trans('strings.The operation was successful!'),
+                          text: this.$trans('strings.The transfer was successfully completed'),
+                      });
+                      this.form.to = ''
+                      this.form.amount = ''
+                  }else{
+                      Swal.fire({
+                          icon: 'error',
+                          title: this.$trans('strings.The operation cannot be performed'),
+                          text: this.$trans('strings.Insufficient funds for the transfer'),
+                      });
+                  }
+              })
+            }else if(this.recipient && this.exchange){
+                this.form.post('/paypal/payout').then((res)=>{
+                    if(res.data.status === 'success'){
+                        Swal.fire({
+                            icon: 'success',
+                            title: this.$trans('strings.The operation was successful!'),
+                            text: this.$trans('strings.The transfer was successfully completed'),
+                        });
+                        this.form.to = ''
+                        this.form.amount = ''
+                    }else{
+                        Swal.fire({
+                            icon: 'error',
+                            title: this.$trans('strings.The operation cannot be performed'),
+                            text: this.$trans('strings.Insufficient funds for the payout'),
+                        });
+                    }
+                })
+            }
+            else{
+                window.location = '/paypal/express-checkout/' + this.form.amount
+                this.form.to = ''
+                this.form.amount = ''
+            }
+        }
     },
     props:
         {

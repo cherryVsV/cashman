@@ -23,6 +23,21 @@ try {
 window.axios = require('axios');
 
 //window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.moment = require('moment')
+
+// import 'vue-tel-input/dist/vue-tel-input.css';
+
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+window.axios.defaults.headers.common.crossDomain = true;
+
+let token = document.head.querySelector('meta[name="csrf-token"]');
+
+if (token) {
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+} else {
+    console.error('CSRF token not found: https://adonisjs.com/docs/4.1/csrf');
+}
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
@@ -36,7 +51,9 @@ window.Pusher = require('pusher-js');
 
 window.Echo = new Echo({
     broadcaster: 'pusher',
-    key: process.env.MIX_PUSHER_APP_KEY
+    key: process.env.MIX_PUSHER_APP_KEY,
+    cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+    encrypted: false
 });
 window.user = document.head.querySelector('meta[name="user"]') != null ?
     document.head.querySelector('meta[name="user"]').content : null;

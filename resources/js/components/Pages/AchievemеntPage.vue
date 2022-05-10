@@ -11,7 +11,7 @@
             </template>
         </Header>
         <div id="appCapsule" class="full-height">
-            <AchievementList :show-detail="true"></AchievementList>
+            <AchievementList :show-detail="true" :achievements="achievements"></AchievementList>
         </div>
         <BottomMenu></BottomMenu>
     </fragment>
@@ -25,6 +25,7 @@ import Footer from "../LayoutComponents/Footer";
 
 export default {
     name: "AchievementPage",
-    components: {Footer, BottomMenu, AchievementList, Header}
+    components: {Footer, BottomMenu, AchievementList, Header},
+    props: ['achievements']
 }
 </script>

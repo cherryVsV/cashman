@@ -44,13 +44,13 @@
                 <div class="col-6">
                     <div class="stat-box">
                         <div class="title">{{ $trans('strings.Withdrawal') }}</div>
-                        <div class="value">0 {{ $trans('strings.$') }}</div>
+                        <div class="value">{{profile.payouts}} {{ $trans('strings.$') }}</div>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="stat-box">
                         <div class="title">{{ $trans('strings.Transfer') }}</div>
-                        <div class="value text-info">0 {{ $trans('strings.$') }}</div>
+                        <div class="value text-info">{{profile.sendings}} {{ $trans('strings.$') }}</div>
                     </div>
                 </div>
 
@@ -79,10 +79,9 @@ export default {
     data: function () {
         return {
             actions: [
-                {icon: 'withdraw', title: 'Вывод'},
+                {icon: 'withdraw', title: 'Вывод', exchange: true},
                 {icon: 'send', title: 'Отправка'},
                 {icon: 'history', title: 'История', link: '/history'},
-                {icon: 'exchange', title: 'Обмен', exchange: true},
             ],
             currentTitle: '',
             currentExchange: false,

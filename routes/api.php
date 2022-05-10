@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\Achievements\AchievementController;
 use App\Http\Controllers\Admin\AdvertisementController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\TariffController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Callback\CallbackController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Companies\CompanyAuthController;
 use App\Http\Controllers\Companies\CompanyEditSectionController;
 use App\Http\Controllers\Companies\CompanyListController;
@@ -52,6 +54,9 @@ Route::resource('admin/advertisement', AdvertisementController::class);
 Route::get('get/advertisement/{id}', [StoryController::class, 'getData']);
 Route::post('admin/add-advertisement-{id}', [StoryController::class, 'store']);
 Route::resource('admin/users', UserController::class);
+Route::resource('admin/achievements', AchievementController::class);
+Route::post('add-achievement-image', [AchievementController::class, 'addAchievementFile']);
+Route::get('admin/get/achievements/{id}', [AchievementController::class, 'getData']);
 
 //Route::get('upload/products/{id}', [\App\Http\Controllers\Products\ProductController::class, 'getCompany']);
 Route::get('upload/products', [\App\Http\Controllers\Products\ProductController::class, 'uploadProducts'])->name('uploadProducts');
@@ -78,3 +83,5 @@ Route::get('actions/{id}', [\App\Http\Controllers\HistoryAction\HistoryActionCon
 Route::post('/payments', [TariffController::class, 'store'])->name('payments-store');
 Route::post('/payments/cancel', [TariffController::class, 'cancel'])->name('payments-cancel');
 Route::post('/payments/resume', [TariffController::class, 'resume'])->name('payments-resume');
+
+

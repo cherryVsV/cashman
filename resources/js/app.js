@@ -108,6 +108,7 @@ Vue.component('activity-history-page', require('./components/ActivityHistory/Act
 Vue.component('company-admin-menu', require('./components/Companies/CompanyAdmin/CRUD/CompanyAdminMenu').default);
 Vue.component('company-admin-products', require('./components/Companies/CompanyAdmin/CRUD/ProductsTable').default);
 Vue.component('company-admin-advertisement', require('./components/Companies/CompanyAdmin/CRUD/AdvertisementTable').default);
+Vue.component('company-admin-achievements', require('./components/Companies/CompanyAdmin/CRUD/AchievementsTable').default);
 Vue.component('company-admin-users', require('./components/Companies/CompanyAdmin/CRUD/UsersTable').default);
 Vue.component('story-admin-menu', require('./components/Companies/CompanyAdmin/StoryAdminMenu').default);
 Vue.component('company-action-menu', require('./components/Companies/CompanyAdmin/CompanyActionMenu').default);
@@ -120,9 +121,12 @@ Vue.component('company-login-component', require('./components/Companies/Company
 Vue.component('company-complete-registration', require('./components/Companies/CompanyAuth/CompanyRegisterStepper').default);
 //Products
 Vue.component('products', require('./components/Products/ProductList').default);
+Vue.component('product-detail', require('./components/Products/ProductDetail').default);
 
 Vue.component('side-menu', require('./components/LayoutComponents/SideMenu').default);
-
+Vue.component('comment', require('./components/Products/Comment'));
+Vue.component('comments', require('./components/Products/Comments'))
+Vue.component('new-comment', require('./components/Products/NewComment'))
 
 const Toast = Swal.mixin({
     toast: true,

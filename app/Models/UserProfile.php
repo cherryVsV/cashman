@@ -13,7 +13,7 @@ class UserProfile extends Model
     protected $casts = [
         'messengers' => 'array'
     ];
-    protected $appends = ["score", 'debitings', 'offs', 'notifications'];
+    protected $appends = ["score", 'debitings', 'offs', 'payouts', 'sendings', 'notifications'];
     public function user(){
         return $this->belongsTo(User::class, 'user_id');
     }
@@ -48,5 +48,23 @@ class UserProfile extends Model
             return $count;
         }
         return 0;
+    }
+
+    public function getPayoutsAttribute(){
+        $offs = HistoryUsersCompany::where(['user_id'=> $this->user_id, 'type->ru'=>'Вывод'])->sum('value');
+        if(!is_null($offs)){
+            return round($offs, 2);
+        }
+        return 0;
+
+    }
+
+    public function getSendingsAttribute(){
+        $offs = HistoryUsersCompany::where(['user_id'=> $this->user_id, 'type->ru'=>'Перевод'])->sum('value');
+        if(!is_null($offs)){
+            return round($offs, 2);
+        }
+        return 0;
+
     }
 }

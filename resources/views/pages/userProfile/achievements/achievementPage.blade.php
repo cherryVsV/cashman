@@ -4,5 +4,5 @@
 @endsection
 
 @section('content')
-    <achievement></achievement>
+    <achievement :achievements='{!! json_encode($achievements) !!}'></achievement>
 @endsection

@@ -22,10 +22,10 @@
                                     <header>{{ admin.name }}</header>
                                     <footer>{{ admin.phone }}</footer>
                                 </div>
-                                <a v-if="admin.isActive" href="#" class="headerButton">
+                                <a v-if="!admin.isActive" href="#" class="headerButton">
                                     Online
                                 </a>
-                                <a v-if="!admin.isActive" href="#" class="headerButton">
+                                <a v-if="admin.isActive" href="#" class="headerButton">
                                     Offline
                                 </a>
 

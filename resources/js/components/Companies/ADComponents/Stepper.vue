@@ -12,7 +12,7 @@
         </Header>
         <br/>
         <form-wizard @onComplete="onComplete" enctype="multipart/form-data">
-            <tab-content :title="$trans('strings.Name and description of the ad')" :selected="true">
+            <tab-content :title="$trans('strings.Title and description of the ad')" :selected="true">
                 <div class="form-group">
                     <label>{{$trans('strings.Title')}}</label>
                     <input

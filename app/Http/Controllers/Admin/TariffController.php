@@ -15,7 +15,8 @@ class TariffController extends Controller
     public function getPage($id){
         $company = Company::find($id);
         $tariffs = Tariff::get();
-        $intent = Company::find($id)->createSetupIntent();
+        $intent = $company->createSetupIntent();
+        //$intent = 'lala';
         $plan = $this->getCurrentPlan($company);
         return view('pages.companyProfile.Admin.companyTariffs', compact('company', 'tariffs', 'intent', 'plan'));
     }
@@ -56,7 +57,7 @@ class TariffController extends Controller
 
     public function getCurrentPlan($company){
         $plan = null;
-        if($company->subscribed('default') || $company->subscription('default')->onGracePeriod()){
+        if($company->subscribed('default') ){
             $tmp = Tariff::find($company->tariff_id);
             $plan = (object) ['name' => $tmp->title,
                 'sum'=>$tmp->money,

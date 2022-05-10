@@ -1,4 +1,5 @@
 let state = {
-    companies: []
+    companies: [],
+    comments: []
 }
 export default  state

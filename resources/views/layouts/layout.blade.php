@@ -49,7 +49,7 @@
     };
 
     firebase.initializeApp(firebaseConfig);
-     messaging = firebase.messaging();
+    messaging = firebase.messaging();
 
     function initFirebaseMessagingRegistration() {
         messaging

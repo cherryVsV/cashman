@@ -24,7 +24,7 @@
             <StatisticsSummary :profile="profile"></StatisticsSummary>
             <CompanyList :user="auth_user" :companies="companies"></CompanyList>
             <HistoryActionList v-if="actions.length>0" :show-detail="false" :actions="actions"></HistoryActionList>
-            <AchievementList :show-detail="false"></AchievementList>
+            <AchievementList v-if="achievements.length>0" :show-detail="false" :achievements="achievements"></AchievementList>
             <CashBackList v-if="cashbacks.length>0" :cashbacks="cashbacks"></CashBackList>
             <StoryList v-if="stories.length>0" :stories="stories"></StoryList>
             <ProductTile v-if="products.length>0" :items="products"></ProductTile>
@@ -75,7 +75,11 @@ export default {
         },
         actions:{
             required: true
-        }
+        },
+        achievements:{
+            default:null
+        },
+
     },
     data() {
         return {
@@ -100,6 +104,7 @@ export default {
     mounted() {
         this.getProfileData()
         this.getProductsData()
+
     }
 }
 </script>

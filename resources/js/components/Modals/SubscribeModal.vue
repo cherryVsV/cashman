@@ -26,7 +26,7 @@
                             <div class="form-group basic">
                                 <slot name="button">
                                     <button type="button" class="btn btn-primary btn-block btn-lg"  @click="processPayment"
-                                            data-bs-dismiss="modal">{{ $trans('strings.Buy a subscription') }}
+                                            data-bs-dismiss="modal" :data-secret="intent">{{ $trans('strings.Buy a subscription') }}
                                     </button>
                                 </slot>
                             </div>

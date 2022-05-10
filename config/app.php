@@ -182,7 +182,7 @@ return [
         \Torann\GeoIP\GeoIPServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Stevebauman\Location\LocationServiceProvider::class,
-
+        Srmklive\PayPal\Providers\PayPalServiceProvider::class
     ],
 
     /*

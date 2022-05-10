@@ -75,10 +75,6 @@ export default {
             type: Object,
             required: true
         }
-    },
-    mounted() {
-        console.log(typeof (this.items))
-        console.log(this.items)
     }
 
 }

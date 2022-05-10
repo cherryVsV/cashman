@@ -41,6 +41,12 @@ class User extends \TCG\Voyager\Models\User
     {
         return $this->HasMany(UserCharacteristic::class);
     }
+
+    public function invoices()
+    {
+        return $this->HasMany(Invoice::class);
+    }
+
     public function notifications()
     {
         return $this->HasMany(Notification::class);

@@ -2,18 +2,18 @@
     <fragment>
         <div class="in">
             <div>
-                <h4>{{ achievement.title }}</h4>
-                <p>{{ achievement.achievement_description }}</p>
+                <h4>{{ achievement.achievement.title }}</h4>
+                <p>{{ achievement.achievement.achievement_description }}</p>
             </div>
-            <div class="price">$ {{ achievement.value }}
-                <a :href="'achievements/achievements-' + this.achievement.id" v-if="showDetail" type="button"
-                   class="btn btn-text-primary me-1 mb-1" @click="showAchievementDetail">{{$trans('strings.View')}}}</a>
+            <div class="price">
+                <a :href="'achievements/achievements-' + achievement.id" v-if="showDetail" type="button"
+                   class="btn btn-text-primary me-1 mb-1" @click="showAchievementDetail">{{$trans('strings.View')}}</a>
             </div>
 
         </div>
         <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85"
-                 aria-valuemin="0" aria-valuemax="100">{{ achievement.position }} %
+            <div class="progress-bar" role="progressbar" :style="'width:' + achievement.progress +'%;'" :aria-valuenow="achievement.progress"
+                 aria-valuemin="0" aria-valuemax="100">{{ achievement.progress }} %
             </div>
         </div>
     </fragment>
